@@ -7,8 +7,8 @@ Run `bash ojsWarrior.sh` as root from a fresh Debian 10 installation, enter the 
 
 1. Install prerequisite packages for OJS3
 2. Configure MySQL with an `ojs` user
-3. Download and install OJS3 for a user-set amount of times under `/var/www/html/journal1`, `/var/www/html/journal2`, `var/www/html/journal3`, etc.
-4. The installations are available on `http://your.domain./journal1`, `http://your.domain./journal2`, etc.
+3. Download and install OJS3 for a user-set amount of times under `/var/www/html/journal1`, `/var/www/html/journal2`, `/var/www/html/journal3`, etc.
+4. The installations are available on `http://your.domain/journal1`, `http://your.domain/journal2`, etc.
 
 ## Notes
 
