@@ -8,7 +8,7 @@ Run `bash roadWarrior.sh` as root from a fresh Debian 10 installation, enter the
 1. Install prerequisite packages for OJS3
 2. Configure MySQL with an `ojs` user
 3. Download and install OJS3 for a user-set amount of times under `/var/www/html/journal1`, `/var/www/html/journal2`, `/var/www/html/journal3`, etc.
-4. The installations are available on `http://your.domain/journal1`, `http://your.domain/journal2`, etc.
+4. The installations are available on `http://your.ip/journal1`, `http://your.ip/journal2`, etc.
 
 ## Notes
 
@@ -16,3 +16,4 @@ Run `bash roadWarrior.sh` as root from a fresh Debian 10 installation, enter the
 - All installations use the same MySQL user: `ojs` with a password `ojsPass1234`
 - Username for each installation is the journal number, e.g. `journal1`, `journal2`, etc.
 - Password for each installation is `ojsPass1234`
+- The script sets the `base_url` parameter in `config.inc.php` by the result of `hostname -I` command. If you have a domain, it's safer to change the first line of `roadWarrior.sh` to `ip="your.doman.name"`
