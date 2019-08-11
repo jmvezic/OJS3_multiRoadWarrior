@@ -3,7 +3,6 @@ read -sp "Enter the password you wish to have as MySQL root user: `echo $'\n> '`
 read -sp "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
 apt-get update
 apt-get --assume-yes upgrade
-apt-get -y remove --purge unscd
 apt-get -y install apache2
 apt-get -y install mariadb-server
 apt-get -y install htop
