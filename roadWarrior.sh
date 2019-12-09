@@ -1,6 +1,6 @@
 ip="$(hostname -I|cut -f1 -d ' ')"
 read -sp "Enter the password you wish to have as MySQL root user: `echo $'\n> '`" DATABASE_PASS
-read -sp "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
+read -p "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
 apt-get update
 apt-get --assume-yes upgrade
 apt-get -y install apache2
