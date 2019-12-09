@@ -22,7 +22,7 @@ apt-get -y install php7.3-cli php7.3-mbstring unzip php7.3-zip php7.3-xml php7.3
 service apache2 restart
 apt-get -y install curl
 cd
-wget http://pkp.sfu.ca/ojs/download/ojs-3.1.2-1.tar.gz
+wget http://pkp.sfu.ca/ojs/download/ojs-3.1.2-4.tar.gz
 counter=1
 while [ $counter -le $NUMBER_OF_INSTALLS ]
 do
@@ -30,7 +30,7 @@ jourName="journal$counter"
 cd /var/www/html/
 mkdir $jourName
 cd $jourName
-tar --strip-components=1 -xvzf /root/ojs-3.1.2-1.tar.gz ojs-3.1.2-1/ -C .
+tar --strip-components=1 -xvzf /root/ojs-3.1.2-4.tar.gz ojs-3.1.2-4/ -C .
 cd /var/www/
 mkdir "files_$jourName"
 cd html/$jourName
