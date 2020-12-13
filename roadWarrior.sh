@@ -17,12 +17,12 @@ mysql -u root -p"$DATABASE_PASS" -e "CREATE USER 'ojs'@'localhost' IDENTIFIED BY
 mysql -u root -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'ojs'@'localhost' WITH GRANT OPTION;"
 mysql -u root -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES;"
 apt-get -y install build-essential
-apt-get -y install php7.3
-apt-get -y install php7.3-cli php7.3-mbstring unzip php7.3-zip php7.3-xml php7.3-dev php7.3-mysql 
+apt-get -y install php
+apt-get -y install php-cli php-mbstring unzip php-zip php-xml php-dev php-mysql 
 service apache2 restart
 apt-get -y install curl
 cd
-wget http://pkp.sfu.ca/ojs/download/ojs-3.1.2-4.tar.gz
+wget http://pkp.sfu.ca/ojs/download/ojs-3.2.1-2.tar.gz
 counter=1
 while [ $counter -le $NUMBER_OF_INSTALLS ]
 do
@@ -30,7 +30,7 @@ jourName="journal$counter"
 cd /var/www/html/
 mkdir $jourName
 cd $jourName
-tar --strip-components=1 -xvzf /root/ojs-3.1.2-4.tar.gz ojs-3.1.2-4/ -C .
+tar --strip-components=1 -xvzf /root/ojs-3.2.1-2.tar.gz ojs-3.2.1-2/ -C .
 cd /var/www/
 mkdir "files_$jourName"
 cd html/$jourName
@@ -43,9 +43,8 @@ sed -i "s#salt = \"YouMustSetASecretKeyHere!!\"#salt = \"ojsPass1234\"#g" config
 mysql -u root -p"$DATABASE_PASS" -e "CREATE DATABASE ${jourName};"
 php tools/install.php << EOF
 en_US
-en_US,hr_HR
+en_US
 utf-8
-utf8
 utf8
 /var/www/files_$jourName
 $jourName
