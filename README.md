@@ -1,7 +1,7 @@
 # OJS3_multiRoadWarrior
 Bash script for installing a user-defined amount of OJS3 installations on Debian 10. Great for setting up a workshop where multiple people will require their own installation of OJS3.
 
-> :warning: **This script creates an unsafe environment and should only be used for purposes of demonstrating OJS to a limited audience**
+:warning: **This script creates an unsafe environment and should only be used for purposes of demonstrating OJS to a limited audience**
 
 ## Instructions
 
