@@ -19,7 +19,7 @@ mysql -u root -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'ojs'@'local
 mysql -u root -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES;"
 apt-get -y install build-essential
 apt-get -y install php
-apt-get -y install php-cli php-mbstring unzip php-zip php-xml php-dev php-mysql 
+apt-get -y install php-cli php-mbstring unzip php-zip php-xml php-dev php-mysql php-intl
 service apache2 restart
 apt-get -y install curl
 cd
