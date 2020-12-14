@@ -1,6 +1,14 @@
 ip="$(hostname -I|cut -f1 -d ' ')"
+OJSVERSION="3.2.1-2"
 read -sp "Enter the password you wish to have as MySQL root user: `echo $'\n> '`" DATABASE_PASS
 read -p "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
+read -p "Which stable version to install? Default: $OJSVERSION (press enter do install default or type the custom version): `echo $'\n> '`" CUSTOMOJSVERSION
+if [ -z "$CUSTOMOJSVERSION" ]
+then
+      OJSVERSION="3.2.1-2"
+else
+      OJSVERSION=$CUSTOMOJSVERSION
+fi
 apt-get update
 apt-get --assume-yes upgrade
 apt-get -y install wget
@@ -23,7 +31,7 @@ apt-get -y install php-cli php-mbstring unzip php-zip php-xml php-dev php-mysql 
 service apache2 restart
 apt-get -y install curl
 cd
-wget http://pkp.sfu.ca/ojs/download/ojs-3.2.1-2.tar.gz
+wget http://pkp.sfu.ca/ojs/download/ojs-$OJSVERSION.tar.gz
 counter=1
 while [ $counter -le $NUMBER_OF_INSTALLS ]
 do
@@ -31,7 +39,7 @@ jourName="journal$counter"
 cd /var/www/html/
 mkdir $jourName
 cd $jourName
-tar --strip-components=1 -xvzf /root/ojs-3.2.1-2.tar.gz ojs-3.2.1-2/ -C .
+tar --strip-components=1 -xvzf /root/ojs-$OJSVERSION.tar.gz ojs-$OJSVERSION/ -C .
 cd /var/www/
 mkdir "files_$jourName"
 cd html/$jourName
