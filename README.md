@@ -5,7 +5,13 @@ Bash script for installing a user-defined amount of OJS3 installations on Debian
 
 ## Instructions
 
-Run `bash roadWarrior.sh` as root from a fresh Debian 10 installation, enter the desired MySQL root password and the desired amount of OJS3 installations. The script will automatically:
+Run `bash roadWarrior.sh` as root from a fresh Debian 10 installation and provide:
+
+- the desired MySQL root password
+- the desired amount of OJS3 installations
+- the desired specific OJS3 version (or use the default)
+
+The script will automatically:
 
 1. Install prerequisite packages for OJS3
 2. Configure MySQL with an `ojs` user
