@@ -24,4 +24,4 @@ The script will automatically:
 - All installations use the same MySQL user: `ojs` with a password `ojsPass1234`
 - Username for each installation is the journal number, e.g. `journal1`, `journal2`, etc.
 - Password for each installation is `ojsPass1234`
-- The script sets the `base_url` parameter in `config.inc.php` by the result of `hostname -I` command. If you have a domain, it's safer to change the first line of `roadWarrior.sh` to `ip="your.doman.name"`
+- The script sets the `base_url` parameter in `config.inc.php` by the result of `hostname -I` command. If you have a domain, it's safer to change the first line of `roadWarrior.sh` to `ip="your.domain.name"`
