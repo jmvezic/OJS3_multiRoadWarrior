@@ -1,6 +1,8 @@
 # OJS3_multiRoadWarrior
 Bash script for installing a user-defined amount of OJS3 installations on Debian 10. Great for setting up a workshop where multiple people will require their own installation of OJS3.
 
+:zap: This branch (**master**) installs a stable release version of OJS3 from prebuilt tar.gz. packages. If you want to install the latest development version from PKP's git repo, check out the **dev** branch of this repo.
+
 :warning: **This script creates an unsafe environment and should only be used for purposes of demonstrating OJS to a limited audience**
 
 ## Instructions
