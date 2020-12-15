@@ -1,14 +1,6 @@
 ip="$(hostname -I|cut -f1 -d ' ')"
-OJSVERSION="3.2.1-2"
 read -sp "Enter the password you wish to have as MySQL root user: `echo $'\n> '`" DATABASE_PASS
 read -p "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
-read -p "Which stable version to install? Default: $OJSVERSION (press enter do install default or type the custom version): `echo $'\n> '`" CUSTOMOJSVERSION
-if [ -z "$CUSTOMOJSVERSION" ]
-then
-      OJSVERSION="3.2.1-2"
-else
-      OJSVERSION=$CUSTOMOJSVERSION
-fi
 apt-get update
 apt-get --assume-yes upgrade
 apt-get -y install wget
@@ -30,16 +22,32 @@ apt-get -y install php
 apt-get -y install php-cli php-mbstring unzip php-zip php-xml php-dev php-mysql php-intl
 service apache2 restart
 apt-get -y install curl
+apt-get -y install nodejs npm
 cd
-wget http://pkp.sfu.ca/ojs/download/ojs-$OJSVERSION.tar.gz
+wget https://www.npmjs.com/install.sh
+mv install.sh npm_install.sh
+bash npm_install.sh
+cd
+git clone https://github.com/pkp/ojs.git
+cd ojs
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+export COMPOSER_ALLOW_SUPERUSER=1
+git submodule update --init --recursive
+composer --working-dir=lib/pkp install
+composer --working-dir=plugins/paymethod/paypal install
+composer --working-dir=plugins/generic/citationStyleLanguage install
+npm install
+npm run build
 counter=1
 while [ $counter -le $NUMBER_OF_INSTALLS ]
 do
 jourName="journal$counter"
 cd /var/www/html/
-mkdir $jourName
-cd $jourName
-tar --strip-components=1 -xvzf /root/ojs-$OJSVERSION.tar.gz ojs-$OJSVERSION/ -C .
+cp -r /root/ojs $jourName
 cd /var/www/
 mkdir "files_$jourName"
 cd html/$jourName
@@ -65,7 +73,6 @@ localhost
 ojs
 ojsPass1234
 $jourName
-n
 ${jourName}@localhost
 n
 y
