@@ -1,11 +1,11 @@
 ip="$(hostname -I|cut -f1 -d ' ')"
-OJSVERSION="3.2.1-2"
+OJSVERSION="3.3.0-5"
 read -sp "Enter the password you wish to have as MySQL root user: `echo $'\n> '`" DATABASE_PASS
 read -p "Number of installations to create: `echo $'\n> '`" NUMBER_OF_INSTALLS
 read -p "Which stable version to install? Default: $OJSVERSION (press enter do install default or type the custom version): `echo $'\n> '`" CUSTOMOJSVERSION
 if [ -z "$CUSTOMOJSVERSION" ]
 then
-      OJSVERSION="3.2.1-2"
+      OJSVERSION="3.3.0-5"
 else
       OJSVERSION=$CUSTOMOJSVERSION
 fi
